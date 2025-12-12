@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+build/
+dist/
+*.egg-info/
+
+# Jupyter
+.ipynb_checkpoints
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Models and large binaries
+*.pt
+*.pth
+models/
+weights/
+*.onnx
+
+# Data
+/data/
+/datasets/
+/output/
+*.mp4
+*.avi
+
+# Logs
+*.log
+
+# PyCharm
+.idea/
