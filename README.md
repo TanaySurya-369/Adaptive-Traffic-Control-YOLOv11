@@ -24,9 +24,9 @@ Vision-based adaptive traffic signal control using YOLOv11 and Pygame simulation
 
 If you have a short GIF at `README_ASSETS/demo.gif` it will be displayed here. Otherwise, a thumbnail image is shown instead.
 
-![Demo Thumbnail](README_ASSETS/demo.gif)
+![Demo Thumbnail](images/mod_int.png)
 
-If the GIF is not present, run the demo locally to create one (see Quickstart).
+If you prefer, replace this with `README_ASSETS/demo.gif` after adding a demo GIF. See Quickstart to run the demo and create a GIF locally.
 
 ## Motivation
 
