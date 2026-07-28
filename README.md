@@ -1,144 +1,272 @@
-# Adaptive-Traffic-Control-YOLOv11
+# 🚦 TrafficPilot AI
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg) ![python](https://img.shields.io/badge/python-3.10%2B-orange.svg) ![build](https://img.shields.io/badge/build-passing-brightgreen) ![repo size](https://img.shields.io/github/repo-size/your-username/Adaptive-Traffic-Control-YOLOv11)
+### Autonomous Traffic Management Agent using YOLOv11
 
-Vision-based adaptive traffic signal control using YOLOv11 and Pygame simulation.
+An AI-powered autonomous traffic management agent that monitors CCTV
+traffic feeds, detects vehicles using **YOLOv11**, estimates lane-wise
+traffic density, and dynamically optimizes traffic signal timings in
+real time.
 
-## Table of contents
-- [Demo](#demo)
-- [Motivation](#motivation)
-- [What's included](#whats-included)
-- [Quickstart](#quickstart)
-- [Usage examples](#usage-examples)
-- [Project structure](#project-structure)
-- [Dataset & model weights](#dataset--model-weights)
-- [Metrics and demo results](#metrics-and-demo-results)
-- [How it works](#how-it-works)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact / Authors](#contact--authors)
-- [Citation](#citation)
-- [Screenshots](#screenshots)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/python-3.10%2B-orange.svg)
+![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
+![Repo
+Size](https://img.shields.io/github/repo-size/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11)
 
-## Demo
+------------------------------------------------------------------------
 
-If you have a short GIF at `README_ASSETS/demo.gif` it will be displayed here. Otherwise, a thumbnail image is shown instead.
+## 📖 Table of Contents
 
-![Demo Thumbnail](images/mod_int.png)
+-   Demo
+-   Features
+-   Motivation
+-   System Architecture
+-   AI Agent Workflow
+-   Project Structure
+-   Installation
+-   Quick Start
+-   Usage
+-   Dataset & Model Weights
+-   Results
+-   Screenshots
+-   Future Roadmap
+-   Contributing
+-   License
+-   Authors
+-   Citation
 
-If you prefer, replace this with `README_ASSETS/demo.gif` after adding a demo GIF. See Quickstart to run the demo and create a GIF locally.
+------------------------------------------------------------------------
 
-## Motivation
+# 🎬 Demo
 
-Road congestion increases travel times, fuel consumption and emissions. This project demonstrates a vision-based adaptive signal control system using YOLOv11 detections to estimate traffic density and allocate green-time dynamically. The goal is to reduce waiting time, fuel consumption, and CO2 emissions in urban intersections.
+TrafficPilot AI continuously monitors traffic through CCTV footage,
+detects vehicles using YOLOv11, estimates lane-wise congestion, and
+dynamically adjusts traffic signal timings using a Pygame-based traffic
+simulation.
 
-## What's included
-- `images/` — thumbnails and visual assets used in the README and demo.
-- `sample_videos/` — simulated video clips for testing detection and simulation.
-- `papers/` — PDFs describing the methodology and reported results.
-- `Merges.py` — main integrated detection + simulation program.
-- `scripts/` — helper scripts for setup, checking files, and weight download instructions.
-- `examples/` — copy/paste demo commands.
-- `docs/` — architecture diagram and quickstart docs.
+> **Tip:** Add a GIF at `README_ASSETS/demo.gif` for a more engaging
+> project page.
 
-## Quickstart
+### Simulation Preview
 
-```bash
-# 1. Create and activate a virtual environment
+![TrafficPilot AI Demo](images/mod_int.png)
+
+------------------------------------------------------------------------
+
+# ✨ Features
+
+-   🚗 Real-time vehicle detection using YOLOv11
+-   🚦 Dynamic traffic signal optimization
+-   🧠 Autonomous AI decision engine
+-   📹 CCTV-based traffic monitoring
+-   📊 Lane-wise traffic density estimation
+-   🎮 Pygame traffic simulation
+-   ⚡ Low-cost solution using existing surveillance cameras
+-   🌍 Smart city ready architecture
+-   📈 Reduced waiting time and improved traffic flow
+
+------------------------------------------------------------------------
+
+# 🎯 Motivation
+
+Traditional fixed-time traffic signals cannot adapt to changing traffic
+conditions. TrafficPilot AI improves urban mobility by analyzing live
+traffic, estimating congestion, and allocating green signal time
+intelligently to reduce waiting time, fuel consumption, and emissions.
+
+------------------------------------------------------------------------
+
+# 🏗️ System Architecture
+
+> Replace the image below with your architecture diagram if available.
+
+![Architecture](docs/architecture.png)
+
+------------------------------------------------------------------------
+
+# 🧠 AI Agent Workflow
+
+``` text
+CCTV Video Feed
+        │
+        ▼
+YOLOv11 Vehicle Detection
+        │
+        ▼
+Lane-wise Traffic Density Estimation
+        │
+        ▼
+AI Decision Engine
+        │
+        ▼
+Adaptive Signal Timing
+        │
+        ▼
+Pygame Traffic Simulation
+        │
+        ▼
+Continuous Real-Time Optimization
+```
+
+------------------------------------------------------------------------
+
+# 📂 Project Structure
+
+``` text
+Adaptive-Traffic-Control-YOLOv11/
+│
+├── docs/
+├── images/
+├── papers/
+├── scripts/
+├── examples/
+├── sample_videos/
+├── README_ASSETS/
+├── Merges.py
+├── run.py
+├── requirements.txt
+├── LICENSE
+├── CONTRIBUTING.md
+└── README.md
+```
+
+------------------------------------------------------------------------
+
+# ⚙️ Installation
+
+``` bash
+git clone https://github.com/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11.git
+
+cd Adaptive-Traffic-Control-YOLOv11
+
 python -m venv .venv
-source .venv/bin/activate      # Linux / macOS
-.venv\Scripts\activate         # Windows PowerShell
 
-# 2. Install dependencies
+# Windows
+.venv\Scripts\activate
+
+# Linux/macOS
+source .venv/bin/activate
+
 pip install -r requirements.txt
+```
 
-# 3. Place YOLO weights
+------------------------------------------------------------------------
+
+# 🚀 Quick Start
+
+``` bash
 mkdir -p models
-# Download yolo11x weights from <PUT_YOUR_WEIGHT_URL_HERE> and save as models/yolo11x.pt
-# DO NOT commit or upload model weights to this repo.
 
-# 4. Run detection demo on a sample video
+# Download official YOLOv11x weights
+# Save as:
+# models/yolo11x.pt
+
 python Merges.py --input sample_videos/simulated_file_1.mp4 --mode detect
 
-# 5. Run the Pygame simulation
 python Merges.py --mode simulate
 ```
 
-Troubleshooting tips:
-- If you see codec errors, install `ffmpeg` and ensure your OpenCV build supports the video codec.
-- Ensure `models/yolo11x.pt` exists and is readable.
-- On Windows PowerShell, use the PowerShell activate command shown above.
+------------------------------------------------------------------------
 
-## Usage examples
+# 💻 Usage
 
-```bash
-# Detect on one or multiple input files (comma-separated)
+``` bash
 python run.py --mode detect --input sample_videos/simulated_file_1.mp4 --weights models/yolo11x.pt
 
-# Run simulation only
 python run.py --mode simulate
 ```
 
-## Project structure
+------------------------------------------------------------------------
 
-- images/: visual assets
-- sample_videos/: demo videos
-- papers/: project papers and reports
-- Merges.py: main program (detection + simulation)
-- run.py: lightweight CLI wrapper
-- scripts/: helper scripts
-- docs/: architecture and quickstart
+# 📦 Dataset & Model Weights
 
-## Dataset & model weights
+Model weights are not included due to their size.
 
-Model weights are large and not included. Download the weights manually and place them in `models/yolo11x.pt`.
+Save the official YOLOv11x weights as:
 
-Download placeholder:
-
-```
-# Download weights and save as models/yolo11x.pt
-# URL: <PUT_YOUR_WEIGHT_URL_HERE>
+``` text
+models/yolo11x.pt
 ```
 
-## Metrics and demo results
+> Do not commit model weights to the repository.
 
-The included paper reports roughly 25% wait-time reduction and 15% fuel savings for the tested scenarios — see `papers/Paper Final.pdf` for methodology.
+------------------------------------------------------------------------
 
-## How it works
+# 📊 Results
 
-Video frames → YOLO detection → counting and density estimation → rule-based adaptive timing → Pygame simulation for validation. See `docs/architecture.md` for details.
+The project demonstrates:
 
-## Contributing
+-   Reduced average waiting time
+-   Improved traffic throughput
+-   Adaptive signal allocation
+-   Better traffic flow using computer vision
+-   Lower idle time and fuel consumption (simulation)
 
-See `CONTRIBUTING.md` for how to run locally, style suggestions and how to make PRs.
+------------------------------------------------------------------------
 
-## License
+# 📸 Screenshots
 
-This project is licensed under the MIT License — see `LICENSE`.
+Replace or extend these with additional screenshots.
 
-## Contact / Authors
+![Traffic Simulation](images/mod_int.png)
 
-- Tanay Surya Vaikuntapu
-- Tulasi S. Prasad
-- Goli Jahnavi
-- Tanay Surya Vardhan
-- Shaik Salman
+------------------------------------------------------------------------
 
-## Citation
+# 🛣️ Future Roadmap
 
-Please cite the included paper and/or this repository if you use this work.
+-   Emergency vehicle prioritization
+-   Multi-intersection coordination
+-   Pedestrian detection
+-   Live CCTV deployment
+-   Cloud dashboard
+-   Traffic analytics
+-   IoT integration
 
-BibTeX skeleton:
+------------------------------------------------------------------------
 
-```bibtex
-@misc{adaptive-yolo11-2025,
-  title={Adaptive Traffic Control using YOLOv11},
-  author={Tanay Surya Vaikuntapu and Tulasi S. Prasad and Goli Jahnavi and others},
+# 🤝 Contributing
+
+Contributions are welcome.
+
+1.  Fork the repository.
+2.  Create a feature branch.
+3.  Commit your changes.
+4.  Open a Pull Request.
+
+Please read **CONTRIBUTING.md** before contributing.
+
+------------------------------------------------------------------------
+
+# 📜 License
+
+Distributed under the MIT License.
+
+------------------------------------------------------------------------
+
+# 👨‍💻 Authors
+
+-   Tanay Surya Vaikuntapu
+-   S. Tulasi Prasad
+-   Goli Jahnavi
+-   Tanay Surya Vardhan
+-   Shaik Salman
+
+------------------------------------------------------------------------
+
+# 📚 Citation
+
+``` bibtex
+@misc{trafficpilotai2025,
+  title={TrafficPilot AI: Adaptive Traffic Control using YOLOv11},
+  author={Tanay Surya Vaikuntapu and S. Tulasi Prasad and Goli Jahnavi and Tanay Surya Vardhan and Shaik Salman},
   year={2025},
-  howpublished={\url{https://github.com/<your-username>/Adaptive-Traffic-Control-YOLOv11}}
+  howpublished={https://github.com/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11}
 }
 ```
 
-## Screenshots
+------------------------------------------------------------------------
 
-See `images/` for screenshots used in the demo. Example: `images/mod_int.png`.
+# ⭐ Support
+
+If you find this project useful, consider giving the repository a ⭐ on
+GitHub.
