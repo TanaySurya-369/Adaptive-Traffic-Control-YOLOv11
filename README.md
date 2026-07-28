@@ -1,272 +1,157 @@
+<div align="center">
+
 # 🚦 TrafficPilot AI
 
 ### Autonomous Traffic Management Agent using YOLOv11
 
-An AI-powered autonomous traffic management agent that monitors CCTV
-traffic feeds, detects vehicles using **YOLOv11**, estimates lane-wise
-traffic density, and dynamically optimizes traffic signal timings in
-real time.
+> **AI-powered intelligent traffic signal optimization using Computer Vision, YOLOv11, and autonomous decision-making for smarter cities.**
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/python-3.10%2B-orange.svg)
-![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)
-![Repo
-Size](https://img.shields.io/github/repo-size/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Python](https://img.shields.io/badge/Python-3.10+-orange.svg)
+![Build](https://img.shields.io/badge/Build-Passing-brightgreen.svg)
+![YOLOv11](https://img.shields.io/badge/YOLO-YOLOv11-red.svg)
+![Repo Size](https://img.shields.io/github/repo-size/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11)
 
-------------------------------------------------------------------------
+</div>
+
+---
+
+TrafficPilot AI is an AI-powered autonomous traffic management system that analyzes CCTV traffic feeds, detects vehicles using **YOLOv11**, estimates lane-wise congestion, and dynamically optimizes traffic signal timings to improve urban traffic flow.
+
+---
+
+# 🚀 Key Highlights
+
+- 🤖 Autonomous AI Agent for traffic signal optimization
+- 🚗 Real-time vehicle detection using YOLOv11
+- 🚦 Dynamic traffic signal control
+- 📊 Lane-wise traffic density estimation
+- 🎮 Interactive traffic simulation using Pygame
+- 🌍 Designed for Smart City applications
+- ⚡ Utilizes existing CCTV infrastructure
 
 ## 📖 Table of Contents
 
--   Demo
--   Features
--   Motivation
--   System Architecture
--   AI Agent Workflow
--   Project Structure
--   Installation
--   Quick Start
--   Usage
--   Dataset & Model Weights
--   Results
--   Screenshots
--   Future Roadmap
--   Contributing
--   License
--   Authors
--   Citation
+- [Demo](#-demo)
+- [Key Highlights](#-key-highlights)
+- [Features](#-features)
+- [Motivation](#-motivation)
+- [System Architecture](#-system-architecture)
+- [AI Agent Workflow](#-ai-agent-workflow)
+- [Technology Stack](#-technology-stack)
+- [Project Structure](#-project-structure)
+- [Installation](#-installation)
+- [Quick Start](#-quick-start)
+- [Usage](#-usage)
+- [Dataset & Model Weights](#-dataset--model-weights)
+- [Results](#-results)
+- [Screenshots](#-screenshots)
+- [Future Roadmap](#-future-roadmap)
+- [Contributing](#-contributing)
+- [License](#-license)
+- [Authors](#-authors)
+- [Citation](#-citation)
+- [Support](#-support)
 
-------------------------------------------------------------------------
+# 💡 Why TrafficPilot AI?
 
-# 🎬 Demo
+Traditional traffic systems operate on fixed signal timings and cannot respond to changing traffic conditions.
 
-TrafficPilot AI continuously monitors traffic through CCTV footage,
-detects vehicles using YOLOv11, estimates lane-wise congestion, and
-dynamically adjusts traffic signal timings using a Pygame-based traffic
-simulation.
+TrafficPilot AI continuously monitors traffic using computer vision, analyzes congestion levels, and autonomously adjusts traffic signal durations in real time.
 
-> **Tip:** Add a GIF at `README_ASSETS/demo.gif` for a more engaging
-> project page.
+This approach helps improve traffic flow while making effective use of existing CCTV infrastructure, making it suitable for smart city deployments.
 
-### Simulation Preview
+# 🛠 Technology Stack
 
-![TrafficPilot AI Demo](images/mod_int.png)
-
-------------------------------------------------------------------------
-
-# ✨ Features
-
--   🚗 Real-time vehicle detection using YOLOv11
--   🚦 Dynamic traffic signal optimization
--   🧠 Autonomous AI decision engine
--   📹 CCTV-based traffic monitoring
--   📊 Lane-wise traffic density estimation
--   🎮 Pygame traffic simulation
--   ⚡ Low-cost solution using existing surveillance cameras
--   🌍 Smart city ready architecture
--   📈 Reduced waiting time and improved traffic flow
-
-------------------------------------------------------------------------
-
-# 🎯 Motivation
-
-Traditional fixed-time traffic signals cannot adapt to changing traffic
-conditions. TrafficPilot AI improves urban mobility by analyzing live
-traffic, estimating congestion, and allocating green signal time
-intelligently to reduce waiting time, fuel consumption, and emissions.
-
-------------------------------------------------------------------------
+| Category | Technology |
+|-----------|------------|
+| Programming Language | Python |
+| Computer Vision | OpenCV |
+| AI Model | YOLOv11 |
+| Deep Learning | PyTorch |
+| Simulation | Pygame |
+| Numerical Computing | NumPy |
+| Version Control | Git & GitHub |
 
 # 🏗️ System Architecture
 
-> Replace the image below with your architecture diagram if available.
+The overall architecture consists of four major components:
 
-![Architecture](docs/architecture.png)
+- 📹 Traffic Monitoring
+- 🚗 Vehicle Detection
+- 🧠 AI Decision Engine
+- 🚦 Adaptive Signal Optimization
 
-------------------------------------------------------------------------
-
-# 🧠 AI Agent Workflow
-
-``` text
-CCTV Video Feed
-        │
-        ▼
-YOLOv11 Vehicle Detection
-        │
-        ▼
-Lane-wise Traffic Density Estimation
-        │
-        ▼
+```text
+Camera
+   │
+   ▼
+YOLOv11 Detection
+   │
+   ▼
+Traffic Density Analysis
+   │
+   ▼
 AI Decision Engine
-        │
-        ▼
+   │
+   ▼
 Adaptive Signal Timing
-        │
-        ▼
-Pygame Traffic Simulation
-        │
-        ▼
-Continuous Real-Time Optimization
-```
+   │
+   ▼
+Traffic Simulation
 
-------------------------------------------------------------------------
 
-# 📂 Project Structure
+---
 
-``` text
-Adaptive-Traffic-Control-YOLOv11/
-│
-├── docs/
-├── images/
-├── papers/
-├── scripts/
-├── examples/
-├── sample_videos/
-├── README_ASSETS/
-├── Merges.py
-├── run.py
-├── requirements.txt
-├── LICENSE
-├── CONTRIBUTING.md
-└── README.md
-```
+## 7️⃣ Replace your Results section
 
-------------------------------------------------------------------------
-
-# ⚙️ Installation
-
-``` bash
-git clone https://github.com/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11.git
-
-cd Adaptive-Traffic-Control-YOLOv11
-
-python -m venv .venv
-
-# Windows
-.venv\Scripts\activate
-
-# Linux/macOS
-source .venv/bin/activate
-
-pip install -r requirements.txt
-```
-
-------------------------------------------------------------------------
-
-# 🚀 Quick Start
-
-``` bash
-mkdir -p models
-
-# Download official YOLOv11x weights
-# Save as:
-# models/yolo11x.pt
-
-python Merges.py --input sample_videos/simulated_file_1.mp4 --mode detect
-
-python Merges.py --mode simulate
-```
-
-------------------------------------------------------------------------
-
-# 💻 Usage
-
-``` bash
-python run.py --mode detect --input sample_videos/simulated_file_1.mp4 --weights models/yolo11x.pt
-
-python run.py --mode simulate
-```
-
-------------------------------------------------------------------------
-
-# 📦 Dataset & Model Weights
-
-Model weights are not included due to their size.
-
-Save the official YOLOv11x weights as:
-
-``` text
-models/yolo11x.pt
-```
-
-> Do not commit model weights to the repository.
-
-------------------------------------------------------------------------
-
+```md
 # 📊 Results
 
-The project demonstrates:
+TrafficPilot AI demonstrates the following capabilities during simulation:
 
--   Reduced average waiting time
--   Improved traffic throughput
--   Adaptive signal allocation
--   Better traffic flow using computer vision
--   Lower idle time and fuel consumption (simulation)
-
-------------------------------------------------------------------------
+- 🚦 Adaptive traffic signal allocation
+- 🚗 Improved traffic throughput
+- 📉 Reduced vehicle waiting time
+- ⛽ Lower idle time and fuel consumption
+- 🌱 Potential reduction in carbon emissions
+- 🤖 Autonomous decision-making for signal optimization
 
 # 📸 Screenshots
 
-Replace or extend these with additional screenshots.
+### Traffic Simulation
 
 ![Traffic Simulation](images/mod_int.png)
 
-------------------------------------------------------------------------
-
-# 🛣️ Future Roadmap
-
--   Emergency vehicle prioritization
--   Multi-intersection coordination
--   Pedestrian detection
--   Live CCTV deployment
--   Cloud dashboard
--   Traffic analytics
--   IoT integration
-
-------------------------------------------------------------------------
-
-# 🤝 Contributing
-
-Contributions are welcome.
-
-1.  Fork the repository.
-2.  Create a feature branch.
-3.  Commit your changes.
-4.  Open a Pull Request.
-
-Please read **CONTRIBUTING.md** before contributing.
-
-------------------------------------------------------------------------
-
-# 📜 License
-
-Distributed under the MIT License.
-
-------------------------------------------------------------------------
-
-# 👨‍💻 Authors
-
--   Tanay Surya Vaikuntapu
--   S. Tulasi Prasad
--   Goli Jahnavi
--   Tanay Surya Vardhan
--   Shaik Salman
-
-------------------------------------------------------------------------
-
-# 📚 Citation
-
-``` bibtex
-@misc{trafficpilotai2025,
-  title={TrafficPilot AI: Adaptive Traffic Control using YOLOv11},
-  author={Tanay Surya Vaikuntapu and S. Tulasi Prasad and Goli Jahnavi and Tanay Surya Vardhan and Shaik Salman},
-  year={2025},
-  howpublished={https://github.com/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11}
-}
-```
-
-------------------------------------------------------------------------
+> Add more screenshots or a short demo GIF to better showcase the project.
 
 # ⭐ Support
 
-If you find this project useful, consider giving the repository a ⭐ on
-GitHub.
+If you found this project useful:
+
+- ⭐ Star this repository
+- 🍴 Fork the project
+- 🐞 Report issues
+- 💡 Suggest new features
+- 🤝 Contribute improvements
+
+Your support helps improve the project and encourages future development.
+
+# 🙏 Acknowledgements
+
+Special thanks to:
+
+- Ultralytics for the YOLO framework
+- OpenCV community
+- PyTorch community
+- All contributors and reviewers
+
+---
+
+<div align="center">
+
+### ⭐ If you like this project, don't forget to leave a Star!
+
+**Made with ❤️ using Python, YOLOv11, OpenCV, and AI**
+
+</div>
