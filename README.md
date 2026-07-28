@@ -99,13 +99,8 @@ Adaptive Signal Timing
    │
    ▼
 Traffic Simulation
-
-
 ---
 
-## 7️⃣ Replace your Results section
-
-```md
 # 📊 Results
 
 TrafficPilot AI demonstrates the following capabilities during simulation:
