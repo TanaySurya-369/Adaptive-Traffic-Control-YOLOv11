@@ -1,0 +1,51 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "trafficpilot-ai"
+version = "0.2.0"
+description = "Computer-vision-based adaptive traffic signal control prototype using YOLO and simulation."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "TrafficPilot AI contributors"}]
+keywords = ["computer-vision", "traffic-control", "yolo", "simulation"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "License :: OSI Approved :: MIT License",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+  "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+vision = ["numpy>=1.24", "opencv-python>=4.8", "ultralytics>=8.3"]
+gui = ["pygame>=2.5"]
+plots = ["matplotlib>=3.8"]
+dev = ["pytest>=8.0", "ruff>=0.5"]
+
+[project.urls]
+Repository = "https://github.com/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11"
+Documentation = "https://github.com/TanaySurya-369/Adaptive-Traffic-Control-YOLOv11#readme"
+
+[project.scripts]
+trafficpilot = "trafficpilot.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

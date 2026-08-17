@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
-echo "This script explains how to obtain YOLO weights."
-echo "Do NOT include model weights in the repository."
-echo "
-1) Create a 'models' directory: mkdir -p models
-2) Download the weights (from your provider) and save as models/yolo11x.pt
-   Example URL placeholder: <PUT_YOUR_WEIGHT_URL_HERE>
-3) Once placed, run the demo: python Merges.py --mode detect --weights models/yolo11x.pt
-"
+set -euo pipefail
+cat <<'MSG'
+TrafficPilot AI does not commit YOLO model weights.
+
+1. Create the local model directory:
+   mkdir -p models
+2. Download an Ultralytics-compatible YOLO11 checkpoint, for example yolo11x.pt,
+   from the official Ultralytics distribution or your approved model source.
+3. Save it locally, for example:
+   models/yolo11x.pt
+4. Run a dry validation first:
+   python -m trafficpilot detect --input lane0.mp4 lane1.mp4 lane2.mp4 lane3.mp4 --roi configs/rois/example.json --dry-run
+5. Run model loading when weights are available:
+   python -m trafficpilot detect --input lane0.mp4 lane1.mp4 lane2.mp4 lane3.mp4 --roi configs/rois/example.json --model models/yolo11x.pt
+MSG

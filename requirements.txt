@@ -1,7 +1,1 @@
-opencv-python
-ultralytics
-numpy
-pygame
-matplotlib
-pillow
-tqdm
+-e .

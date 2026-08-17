@@ -1,0 +1,21 @@
+# Project facts
+
+- **Project name:** TrafficPilot AI — Adaptive Traffic Control Using YOLO.
+- **Problem statement:** Estimate lane-level traffic from video/image inputs and compare adaptive signal timing with fixed-time signal timing in simulation.
+- **Current architecture:** Python package, YAML configuration, CLI, detector wrapper, detection pipeline, ROI utilities, traffic utilities, controllers, headless simulation, metrics, reports, tests, and CI.
+- **Implemented modules:** `trafficpilot.config`, `trafficpilot.cli`, `trafficpilot.detection`, `trafficpilot.traffic`, `trafficpilot.control`, `trafficpilot.metrics`, `trafficpilot.reporting`, and `trafficpilot.simulation`.
+- **Supported input modes:** Simulation from generated scenarios or explicit lane counts; detection from one video/image with saved lane ROIs; detection from multiple lane files with full-frame fallback when no ROI file is supplied.
+- **YOLO model support:** YOLO11 remains the default academic baseline through `models/yolo11x.pt`; any compatible Ultralytics checkpoint path can be supplied with `--model`.
+- **Tracking approach:** Ultralytics `model.track()` wrapper with configurable tracker name; default is `bytetrack.yaml`. Track IDs are used to prevent duplicate per-lane counting when available.
+- **Vehicle classes:** COCO class IDs `[2, 3, 5, 7]` for car, motorcycle, bus, and truck by default.
+- **Lane-counting mechanism:** Saved ROI JSON contains lane polygons. Detection bounding-box centers are assigned to ROIs; unique track IDs are counted once per lane. Untracked detections are counted per frame and may over-count repeated objects.
+- **Traffic-density calculation:** Lane-level traffic-density indicator equals `vehicle_count / road_length` with configurable road length.
+- **Adaptive signal algorithm:** Rule-based deterministic controller. Lane green time is `min(max_green, min_green + vehicles * extra_green_per_vehicle)`. Lanes are prioritized by descending queue length.
+- **Fixed-time baseline:** Constant green duration per lane with a yellow phase. Benchmarking uses the same initial lane counts for adaptive and fixed-time controllers.
+- **Simulation behavior:** Headless deterministic queue-service simulation for reproducible tests and reports.
+- **Metrics:** Total waiting time, average waiting time, fuel consumption estimate, throughput, CO₂ estimate, average queue length, signal utilization, and improvement percentages.
+- **Output artifacts:** JSON/CSV reports under `outputs/reports/`; detection reports and optional annotated MP4s under `outputs/detections/`; generated outputs are ignored by Git.
+- **CLI commands:** `python -m trafficpilot simulate`, `python -m trafficpilot benchmark`, and `python -m trafficpilot detect`.
+- **Dependencies:** Core: PyYAML. Optional vision: NumPy, OpenCV, Ultralytics. Optional GUI: Pygame. Optional plots: Matplotlib. Development: pytest and Ruff.
+- **Known limitations:** Simulation-based evaluation; no validated live-CCTV deployment; no ground-truth detection benchmark; no reinforcement-learning controller; no dashboard; simplified traffic/fuel/emission models.
+- **Reproducibility requirements:** Use `configs/default.yaml`, pass a seed, record scenario/duration/counts, and do not commit model weights or generated reports.
