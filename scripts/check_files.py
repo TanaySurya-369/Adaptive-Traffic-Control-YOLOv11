@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
-"""Simple CI smoke test to ensure required folders/files exist."""
-import os
+"""Repository smoke check used by humans and CI."""
+
 import sys
+from pathlib import Path
 
-required = ["images", "sample_videos", "papers", "models"]
-missing = []
-for name in required:
-    if not os.path.exists(name):
-        missing.append(name)
-
+required = [
+    "src/trafficpilot",
+    "src/trafficpilot/detection/pipeline.py",
+    "configs/default.yaml",
+    "configs/rois/example.json",
+    "README.md",
+    "tests",
+]
+missing = [path for path in required if not Path(path).exists()]
 if missing:
-    print("ERROR: Missing required files or directories:", ", ".join(missing))
-    print("Create the missing directories or place required files before running the demo.")
+    print("ERROR: missing required project paths:", ", ".join(missing))
     sys.exit(2)
-
-print("OK: All required directories exist.")
-sys.exit(0)
+print("OK: required project paths are present.")

@@ -1,20 +1,37 @@
 # Contributing
 
-Thanks for your interest in contributing! This guide helps beginners get started.
+Thank you for improving TrafficPilot AI. Keep contributions focused, tested, and honest about implemented behavior.
 
-1. Run locally
+## Setup
 
 ```bash
 python -m venv .venv
-source .venv/bin/activate   # Linux/macOS
-.venv\Scripts\activate     # Windows PowerShell
-pip install -r requirements.txt
+source .venv/bin/activate          # Linux/macOS
+.venv\Scripts\Activate.ps1         # Windows PowerShell
+python -m pip install --upgrade pip
+python -m pip install -e .[dev]
 ```
 
-2. Code style
-- Keep code readable and documented.
-- Use 4-space indentation and follow PEP8 where possible.
+For YOLO/OpenCV detection work, install the optional vision extras:
 
-3. Making PRs
-- Fork the repo, create a feature branch, make changes, and open a Pull Request.
-- Write clear commit messages and include a short description of changes.
+```bash
+python -m pip install -e .[vision,dev]
+```
+
+## Checks before opening a PR
+
+```bash
+ruff check .
+pytest
+python -m trafficpilot --help
+python -m trafficpilot simulate --scenario mixed --seed 42 --duration 10
+python -m trafficpilot benchmark --runs 1 --duration 10
+```
+
+## Pull request expectations
+
+- Keep README/docs consistent with `docs/project-facts.md`.
+- Do not commit model weights, generated outputs, datasets, secrets, or local environment files.
+- Do not claim detection accuracy, mAP, FPS, latency, or traffic improvements unless they are measured and reproducible.
+- Include tests for new controller, traffic, metrics, reporting, CLI, or detection behavior.
+- Prefer small, reviewable changes with clear commit messages.

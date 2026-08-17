@@ -1,42 +1,39 @@
 # Python
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
 build/
 dist/
-*.egg-info/
 
-# Jupyter
-.ipynb_checkpoints
+# Virtual environments and local config
+.venv/
+venv/
+env/
+.env
 
-# VSCode
+# IDE / OS
 .vscode/
-
-# OS
+.idea/
 .DS_Store
 Thumbs.db
 
-# Models and large binaries
-*.pt
-*.pth
+# Model weights and exported inference artifacts
 models/
 weights/
+*.pt
+*.pth
 *.onnx
+*.engine
 
-# Data
-/data/
-/datasets/
-/output/
-*.mp4
-*.avi
-
-# Logs
+# Data and generated outputs
+data/
+datasets/
+runs/
+outputs/**
+!outputs/
+!outputs/.gitkeep
 *.log
-
-# PyCharm
-.idea/
+*.cache

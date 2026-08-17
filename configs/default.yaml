@@ -1,0 +1,35 @@
+project:
+  name: TrafficPilot AI
+model:
+  path: models/yolo11x.pt
+  confidence: 0.5
+  iou: 0.5
+  image_size: 640
+  device: null
+  tracker: bytetrack.yaml
+traffic:
+  lane_count: 4
+  vehicle_classes: [2, 3, 5, 7]
+  density_road_length: 100.0
+controller:
+  min_green: 10.0
+  extra_green_per_vehicle: 1.0
+  max_green: 50.0
+  yellow_duration: 3.0
+  fixed_green_duration: 30.0
+simulation:
+  fps: 60
+  duration_seconds: 120
+  time_step_seconds: 1.0
+  speed: 30.0
+  seed: 42
+  scenario_thresholds:
+    off_peak_max_total: 39
+    peak_min_total: 101
+metrics:
+  fuel_idle_rate_lps: 0.0008
+  fuel_moving_rate_lps: 0.0012
+  co2_kg_per_liter: 2.3
+outputs:
+  reports_dir: outputs/reports
+  detections_dir: outputs/detections
